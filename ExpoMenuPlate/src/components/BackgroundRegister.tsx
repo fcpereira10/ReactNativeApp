@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
+ 
   container: {
     flex: 1,
     padding: 20,
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+  
   },
 });
 

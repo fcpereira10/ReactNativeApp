@@ -7,7 +7,8 @@ import {
   NavigationState,
   SceneRendererProps,
 } from 'react-native-tab-view';
-import Logo from './Logo';
+import RegisterCustomer from './RegisterCustomer';
+import RegisterCompany from './RegisterCompany';
 
 
 type State = NavigationState<{
@@ -27,8 +28,8 @@ class ScrollableTabBar extends Component<
   state = {
     index: 1,
     routes: [
-      { key: 'cliente', title: 'Cliente' },
-      { key: 'empresa', title: 'Empresa' },
+      { key: 'registerCustomer', title: 'Cliente' },
+      { key: 'registerCompany', title: 'Empresa' },
     ],
   };
 
@@ -49,8 +50,8 @@ class ScrollableTabBar extends Component<
   );
 
   private renderScene = SceneMap({
-    cliente: Logo,
-    empresa: Logo,
+    registerCustomer: RegisterCustomer,
+    registerCompany: RegisterCompany,
   });
 
   render() {

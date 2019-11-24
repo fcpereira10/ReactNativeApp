@@ -19,13 +19,13 @@ const HomeScreen = ({ navigation }: Props) => (
      Entra e descobre os melhores restaurantes!
     </Paragraph>
     <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
-      Login
+      Entrar
     </Button>
     <Button
       mode="outlined"
       onPress={() => navigation.navigate('RegisterScreen')}
     >
-      Sign Up
+      Criar Conta
     </Button>
   </BackgroundHome>
 );
