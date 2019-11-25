@@ -19,7 +19,7 @@ const Router = createStackNavigator(
   },
   {
     initialRouteName: 'HomeScreen',
-    headerMode: 'none',
+    headerMode: 'dark-content',
   }
 );
 
