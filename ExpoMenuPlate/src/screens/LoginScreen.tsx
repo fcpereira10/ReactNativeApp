@@ -74,12 +74,6 @@ const LoginScreen = ({ navigation }: Props) => {
         Entrar
       </Button>
 
-      <View style={styles.row}>
-        <Text style={styles.label}>Não tem uma conta? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
-          <Text style={styles.link}>Registar</Text>
-        </TouchableOpacity>
-      </View>
     </BackgroundRegister>
   );
 };

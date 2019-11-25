@@ -23,9 +23,15 @@ const HomeScreen = ({ navigation }: Props) => (
     </Button>
     <Button
       mode="outlined"
-      onPress={() => navigation.navigate('RegisterScreen')}
+      onPress={() => navigation.navigate('RegisterCompanyScreen')}
     >
-      Criar Conta
+      Criar Conta Empresa
+    </Button>
+    <Button
+      mode="outlined"
+      onPress={() => navigation.navigate('RegisterClientScreen')}
+    >
+      Criar Conta Cliente
     </Button>
   </BackgroundHome>
 );
