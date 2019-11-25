@@ -9,6 +9,7 @@ import {
 } from 'react-native-tab-view';
 import RegisterCustomer from './RegisterCustomer';
 import RegisterCompany from './RegisterCompany';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 type State = NavigationState<{
@@ -56,12 +57,14 @@ class ScrollableTabBar extends Component<
 
   render() {
     return (
+      <ScrollView scrollEnabled={false}>
       <TabView
         navigationState={this.state}
         renderScene={this.renderScene}
         renderTabBar={this.renderTabBar}
         onIndexChange={this.handleIndexChange}
       />
+      </ScrollView>
     );
   }
 }

@@ -31,7 +31,7 @@ const RegisterScreen = ({ navigation }: Props) => {
       
       <BackButton goBack={() => navigation.navigate('HomeScreen')} />
      
-      <ScrollView showsVerticalScrollIndicator={false} scrollEnabled={false} style={{width: "100%"}}>
+      <ScrollView showsVerticalScrollIndicator={false}  style={{width: "100%"}}>
         
         <View style={styles.row}>
         <ScrollableTabBar />

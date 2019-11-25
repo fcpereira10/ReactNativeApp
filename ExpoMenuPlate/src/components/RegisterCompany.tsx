@@ -1,15 +1,12 @@
 import React from 'react'
-import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
-import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { ScrollView } from 'react-native-gesture-handler';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-
-
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import Constants from 'expo-constants';
 export default class RegisterCompany extends React.Component {
   state = {
     username: '', password: '', email: '', phone_number: ''
@@ -28,40 +25,46 @@ export default class RegisterCompany extends React.Component {
   }
  
   render() {
+  
+
     return (
       
-      <View style={{padding: 10, flexGrow: 1}}>
-        <ScrollView showsVerticalScrollIndicator={false} style={{flexGrow: 1,height: 550}}>
+      <View style={{padding: 10, flex: 1}}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
 
          <Logo />
-
-        <Header>Create Account</Header>
+        <Header>Registar Empresa</Header>
+         
         <TextInput
-          placeholder='Username'
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('username', val)}
+          placeholder='Nome Empresa'
+          onChangeText={val => this.onChangeText('name', val)}
         />
         <TextInput
-          placeholder='Password'
-          secureTextEntry={true}
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('password', val)}
+          placeholder='Morada'
+          onChangeText={val => this.onChangeText('address', val)}
+        />
+        <TextInput
+          placeholder='Código Postal'
+          onChangeText={val => this.onChangeText('postal_code', val)}
+        />
+        <TextInput
+          placeholder='NIF/VAT'
+          onChangeText={val => this.onChangeText('nif', val)}
         />
         <TextInput
 
           placeholder='Email'
-          autoCapitalize="none"
-          placeholderTextColor='white'
           onChangeText={val => this.onChangeText('email', val)}
         />
         <TextInput
 
-          placeholder='Phone Number'
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('phone_number', val)}
+          placeholder='Telemóvel'
+          onChangeText={val => this.onChangeText('phone', val)}
+        />
+        <TextInput
+          placeholder='Password'
+          secureTextEntry={true}
+          onChangeText={val => this.onChangeText('password', val)}
         />
         <Button mode="contained" onPress={this.signUp} style={styles.button}>
         Registar
@@ -82,6 +85,7 @@ export default class RegisterCompany extends React.Component {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
+      marginTop: Constants.statusBarHeight,  
       width: '100%',
       maxWidth: 340,
       alignSelf: 'center',
@@ -105,6 +109,5 @@ const styles = StyleSheet.create({
     },
     scrollview: {
       width: '100%',
-    
     },
 })
