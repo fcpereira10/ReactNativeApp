@@ -1,10 +1,14 @@
 import React from 'react'
-import {
-  View,
-  Button,
-  TextInput,
-  StyleSheet
-} from 'react-native'
+import Background from '../components/Background';
+import Logo from '../components/Logo';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
+import BackButton from '../components/BackButton';
+import { theme } from '../core/theme';
+import { ScrollView } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+
 
 export default class RegisterCompany extends React.Component {
   state = {
@@ -25,16 +29,19 @@ export default class RegisterCompany extends React.Component {
  
   render() {
     return (
+      
       <View style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollview}>
+         <Logo />
+
+        <Header>Create Account</Header>
         <TextInput
-          style={styles.input}
           placeholder='Username'
           autoCapitalize="none"
           placeholderTextColor='white'
           onChangeText={val => this.onChangeText('username', val)}
         />
         <TextInput
-          style={styles.input}
           placeholder='Password'
           secureTextEntry={true}
           autoCapitalize="none"
@@ -42,43 +49,61 @@ export default class RegisterCompany extends React.Component {
           onChangeText={val => this.onChangeText('password', val)}
         />
         <TextInput
-          style={styles.input}
+
           placeholder='Email'
           autoCapitalize="none"
           placeholderTextColor='white'
           onChangeText={val => this.onChangeText('email', val)}
         />
         <TextInput
-          style={styles.input}
+
           placeholder='Phone Number'
           autoCapitalize="none"
           placeholderTextColor='white'
           onChangeText={val => this.onChangeText('phone_number', val)}
         />
-        <Button
-          title='Sign Up'
-          onPress={this.signUp}
-        />
+        <Button mode="contained" onPress={this.signUp} style={styles.button}>
+        Registar
+      </Button>
+
+      <View style={styles.row}>
+        <Text style={styles.label}>Already have an account? </Text>
+{/*         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}> */}
+          <Text style={styles.link}>Login</Text>
+{/*         </TouchableOpacity> */}
+      </View>
+      </ScrollView>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  input: {
-    width: 350,
-    height: 55,
-    backgroundColor: '#42A5F5',
-    margin: 10,
-    padding: 8,
-    color: 'white',
-    borderRadius: 14,
-    fontSize: 18,
-    fontWeight: '500',
-  },
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
+      flex: 1,
+      width: '100%',
+      maxWidth: 340,
+      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+  
+  },
+    label: {
+      color: theme.colors.secondary,
+    },
+    button: {
+      marginTop: 24,
+    },
+    row: {
+      flexDirection: 'row',
+      marginTop: 4,
+    },
+    link: {
+      fontWeight: 'bold',
+      color: theme.colors.primary,
+    },
+    scrollview: {
+      width: '100%',
+    
+    },
 })
