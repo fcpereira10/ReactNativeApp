@@ -30,8 +30,9 @@ export default class RegisterCompany extends React.Component {
   render() {
     return (
       
-      <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollview}>
+      <View style={{padding: 10, flexGrow: 1}}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{flexGrow: 1,height: 550}}>
+
          <Logo />
 
         <Header>Create Account</Header>
