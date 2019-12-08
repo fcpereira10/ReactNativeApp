@@ -45,13 +45,14 @@ export default (variables /* : * */ = variable) => {
     '.transparent': {
       backgroundColor: 'transparent',
       borderBottomColor: 'transparent',
+      toolbarBtnColor: '#000000',
       elevation: 0,
       shadowColor: null,
       shadowOffset: null,
       shadowRadius: null,
       shadowOpacity: null,
       paddingTop:
-        platform === PLATFORM.ANDROID ? StatusBar.currentHeight : undefined,
+        platform === PLATFORM.ANDROID ? StatusBar.currentHeight : 30,
       height:
         platform === PLATFORM.ANDROID
           ? variables.toolbarHeight + StatusBar.currentHeight
@@ -124,7 +125,7 @@ export default (variables /* : * */ = variable) => {
           color: variables.toolbarBtnColor
         },
         'NativeBase.IconNB': {
-          color: variables.toolbarBtnColor
+          color: "#0000000"
         },
         paddingHorizontal: variables.buttonPadding
       },

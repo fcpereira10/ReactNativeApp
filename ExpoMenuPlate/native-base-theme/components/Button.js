@@ -29,8 +29,11 @@ export default (variables /* : * */ = variable) => {
     }
   };
   const primaryCommon = {
+   
+   
     'NativeBase.Text': {
-      color: variables.buttonPrimaryBg
+      color: variables.buttonPrimaryBg,
+
     },
     'NativeBase.Icon': {
       color: variables.buttonPrimaryBg
@@ -84,6 +87,7 @@ export default (variables /* : * */ = variable) => {
     }
   };
   const buttonTheme = {
+    
     '.disabled': {
       '.transparent': {
         backgroundColor: 'transparent',
@@ -380,7 +384,7 @@ export default (variables /* : * */ = variable) => {
     shadowOpacity: platformStyle === PLATFORM.MATERIAL ? 0.2 : undefined,
     shadowRadius: platformStyle === PLATFORM.MATERIAL ? 1.2 : undefined,
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'center'
   };
   return buttonTheme;
 };

@@ -17,7 +17,7 @@ export default (variables /* : * */ = variable) => {
     'NativeBase.Input': {
       height: variables.inputHeightBase,
       color: variables.inputColor,
-      paddingLeft: 5,
+      paddingLeft: 0,
       paddingRight: 5,
       flex: 1,
       fontSize: variables.inputFontSize,
@@ -30,7 +30,7 @@ export default (variables /* : * */ = variable) => {
       '.error': {
         borderColor: variables.inputErrorBorderColor
       },
-      paddingLeft: 5,
+      paddingLeft: 0,
       borderWidth: variables.borderWidth,
       borderTopWidth: 0,
       borderRightWidth: 0,
@@ -44,7 +44,7 @@ export default (variables /* : * */ = variable) => {
       '.error': {
         borderColor: variables.inputErrorBorderColor
       },
-      paddingLeft: 5,
+      paddingLeft: 0,
       borderWidth: variables.borderWidth,
       borderColor: variables.inputBorderColor
     },
@@ -55,7 +55,7 @@ export default (variables /* : * */ = variable) => {
       '.error': {
         borderColor: variables.inputErrorBorderColor
       },
-      paddingLeft: 5,
+      paddingLeft: 0,
       borderWidth: variables.borderWidth,
       borderRadius: variables.inputGroupRoundedBorderRadius,
       borderColor: variables.inputBorderColor
@@ -117,7 +117,7 @@ export default (variables /* : * */ = variable) => {
       }
     },
 
-    paddingLeft: 5,
+    paddingLeft: 0,
     borderWidth: variables.borderWidth,
     borderTopWidth: 0,
     borderRightWidth: 0,

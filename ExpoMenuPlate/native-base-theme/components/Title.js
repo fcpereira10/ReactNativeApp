@@ -9,11 +9,9 @@ export default (variables /* : * */ = variable) => {
   const titleTheme = {
     fontSize: variables.titleFontSize,
     fontFamily: variables.titleFontfamily,
-    color: variables.titleFontColor,
-    fontWeight: Platform.OS === PLATFORM.IOS ? '700' : undefined,
+    color: "#000000",
+    fontWeight: Platform.OS === PLATFORM.IOS ? '700' : '700',
     textAlign: 'center',
-    paddingLeft: Platform.OS === PLATFORM.IOS ? 4 : 0,
-    marginLeft: Platform.OS === PLATFORM.IOS ? undefined : -3,
     paddingTop: 1
   };
 

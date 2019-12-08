@@ -33,7 +33,8 @@ export default () => {
     },
     width: 56,
     height: 56,
-    borderRadius: 28
+    borderRadius: 28,
+    alignSelf: 'center'
   };
 
   return thumbnailTheme;

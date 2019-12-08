@@ -7,13 +7,13 @@ export default () => {
         'NativeBase.Label': {
           paddingLeft: null
         },
-        marginLeft: 15
+        marginLeft: 0
       },
       '.inlineLabel': {
         'NativeBase.Label': {
           paddingLeft: null
         },
-        marginLeft: 15
+        marginLeft: 0
       },
       '.placeholderLabel': {
         'NativeBase.Input': {}
@@ -30,7 +30,7 @@ export default () => {
         'NativeBase.Icon': {
           marginTop: 36
         },
-        marginLeft: 15
+        marginLeft: 0
       },
       '.floatingLabel': {
         'NativeBase.Input': {
@@ -46,7 +46,7 @@ export default () => {
           top: 6
         },
         marginTop: 15,
-        marginLeft: 15
+        marginLeft: 0
       },
       '.regular': {
         'NativeBase.Label': {
@@ -67,9 +67,9 @@ export default () => {
           position: 'relative'
         },
         'NativeBase.Input': {
-          left: -15
+          left: 0
         },
-        marginLeft: 15
+        marginLeft: 0
       },
       '.last': {
         marginLeft: 0,
@@ -78,7 +78,7 @@ export default () => {
       'NativeBase.Label': {
         paddingRight: 5
       },
-      marginLeft: 15
+      marginLeft: 0
     }
   };
 
