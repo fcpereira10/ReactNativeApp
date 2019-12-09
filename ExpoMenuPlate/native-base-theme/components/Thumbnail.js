@@ -24,8 +24,8 @@ export default () => {
       }
     },
     '.large': {
-      width: 80,
-      height: 80,
+      width: 150,
+      height: 150,
       borderRadius: 40,
       '.square': {
         borderRadius: 0

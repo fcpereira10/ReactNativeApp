@@ -2,8 +2,9 @@ import React from 'react';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
-import HomeScreen from './screens/HomeScreen';
-import Login from './screens/Login';
+import Home from './screens/HomeScreen';
+import Login from './screens/LoginScreen';
+import Register from './screens/RegisterScreen';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
 import {StyleProvider, Container} from 'native-base';
@@ -33,7 +34,7 @@ export default class App extends React.Component {
     return (
       <StyleProvider style={getTheme(material)}>      
       <Container>
-        <Login />
+        <Register />
       </Container>
       </StyleProvider>
     );

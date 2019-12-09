@@ -7,9 +7,10 @@ import { PLATFORM } from './../variables/commonColor';
 
 export default (variables /* : * */ = variable) => {
   const itemTheme = {
+    maginTop: 10,
     '.floatingLabel': {
       'NativeBase.Input': {
-        height: 50,
+        height: 55,
         top: 8,
         paddingTop: 3,
         paddingBottom: 7,
@@ -150,8 +151,9 @@ export default (variables /* : * */ = variable) => {
       borderColor: variables.inputBorderColor
     },
     '.rounded': {
+      
       'NativeBase.Input': {
-        paddingLeft: 8
+        paddingLeft: 8,
       },
       'NativeBase.Icon': {
         paddingLeft: 10
@@ -234,7 +236,10 @@ export default (variables /* : * */ = variable) => {
     backgroundColor: 'transparent',
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: 2
+    marginLeft: 2,
+    marginTop: 20,
+
+   
   };
 
   return itemTheme;

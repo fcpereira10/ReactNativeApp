@@ -374,7 +374,7 @@ export default (variables /* : * */ = variable) => {
     borderRadius: variables.borderRadiusBase,
     borderColor: variables.buttonPrimaryBg,
     borderWidth: null,
-    height: 45,
+    height: 55,
     flexDirection: 'row',
     elevation: 2,
     shadowColor:
@@ -384,7 +384,8 @@ export default (variables /* : * */ = variable) => {
     shadowOpacity: platformStyle === PLATFORM.MATERIAL ? 0.2 : undefined,
     shadowRadius: platformStyle === PLATFORM.MATERIAL ? 1.2 : undefined,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 20
   };
   return buttonTheme;
 };
