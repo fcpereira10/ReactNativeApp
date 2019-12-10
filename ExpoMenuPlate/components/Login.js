@@ -5,6 +5,7 @@ import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
 
+
 export default class Login extends Component {
   
   render() {
@@ -16,7 +17,6 @@ export default class Login extends Component {
           <Left>
             <Button transparent>
               <Icon name='arrow-back' />
-              <Text>Back</Text>
             </Button>
           </Left>
           <Body>
@@ -40,7 +40,7 @@ export default class Login extends Component {
           </Button>
           <View style={{paddingTop: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row',marginTop: 4}}>
             <Text style={{fontSize: 17}}>Ainda não tem uma Conta? </Text>
-          <TouchableOpacity>
+            <TouchableOpacity>
           <Text style={{fontSize: 17, color: '#FF8B2D'}}>Registar</Text>
         </TouchableOpacity>
       </View>
