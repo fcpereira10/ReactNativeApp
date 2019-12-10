@@ -8,10 +8,11 @@ export default (variables /* : * */ = variable) => {
 
   const tabHeadingTheme = {
     flexDirection: 'row',
-    backgroundColor: 'transparent',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'white',
+    underlineStyle: 'black',
     '.scrollable': {
       paddingHorizontal: 20,
       flex: platform === PLATFORM.ANDROID ? 0 : 1,

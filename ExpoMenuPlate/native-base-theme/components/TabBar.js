@@ -50,7 +50,7 @@ export default (variables /* : * */ = variable) => {
     borderLeftWidth: 0,
     borderRightWidth: 0,
     borderBottomColor: '#ccc',
-    backgroundColor: variables.tabBgColor
+    backgroundColor: variables.tabBgColor,
   };
 
   return tabBarTheme;

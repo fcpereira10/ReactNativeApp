@@ -26,6 +26,7 @@ export default () => {
     '.large': {
       width: 150,
       height: 150,
+      paddingBottom: 20,
       borderRadius: 40,
       '.square': {
         borderRadius: 0

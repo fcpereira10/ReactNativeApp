@@ -15,16 +15,18 @@ export default class Login extends Component {
       <Header transparent>
           <Left>
             <Button transparent>
-              <Icon name="arrow-back"/>
+              <Icon name='arrow-back' />
+              <Text>Back</Text>
             </Button>
           </Left>
           <Body>
-            <Title style={{fontSize: 18}}>Login</Title>
+          
           </Body>
           <Right>
           </Right>
         </Header>
-        <Thumbnail large source={require('../assets/images/logo.png') } />
+        <Thumbnail large source={require('../assets/images/logo.png') }/>
+        <Text style={{paddingTop: 20, fontSize: 25, color: 'black', alignSelf: 'center'}}>Bem-vindo de Volta!</Text>
       <Content scrollEnabled={false}>
         <Form>
         <Item rounded>

@@ -9,6 +9,8 @@ export default (variables /* : * */ = variable) => {
   const platformStyle = variables.platformStyle;
 
   const tabContainerTheme = {
+    borderColor: '#FF7A00',
+
     elevation: 3,
     height: 50,
     flexDirection: 'row',
