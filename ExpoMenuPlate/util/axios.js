@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { getAccessToken } from '../utils/authentication';
+import { getAccessToken } from './authentication';
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 export const getAxiosInstance = () => {
     const instance = axios.create({
-        baseURL: 'https://localhost:5454',
+        baseURL: 'https://192.168.8.102:5454',
         timeout: 5000,
     });
 
