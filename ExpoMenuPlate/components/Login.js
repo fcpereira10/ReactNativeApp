@@ -71,7 +71,7 @@ export default class Login extends Component {
     return (
       <StyleProvider style={getTheme(commonColor)}>
         <Container>
-          <Header transparent>
+          <Header transparent style={{height: 60, paddingTop: 15}}>
             <Left>
               <Button transparent>
                 <Icon name='arrow-back' />
@@ -83,7 +83,7 @@ export default class Login extends Component {
             </Right>
           </Header>
           <Thumbnail large source={require('../assets/images/logo.png')} />
-          <Text style={{ paddingTop: 20, fontSize: 25, color: 'black', alignSelf: 'center' }}>Bem-vindo de Volta!</Text>
+          <Text style={{ paddingTop: 20, fontSize: 25, alignSelf: 'center' }}>Bem-vindo de Volta!</Text>
           <Content scrollEnabled={false}>
             <Form>
               <Item rounded>

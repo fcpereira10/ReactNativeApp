@@ -1,19 +1,22 @@
 import React from 'react';
 import Costumer from "../components/RegisterCostumer";
 import Company from "../components/RegisterCompany";
-import { Container, Header, Tabs, Tab, Left, Right, Body, Button, Icon, Text, Title } from 'native-base';
+import getTheme from '../native-base-theme/components';
+import material from '../native-base-theme/variables/material';
+import commonColor from '../native-base-theme/variables/commonColor';
+import { Container, Header, Tabs, Tab, Left, Right, Body, Button, Icon, Text, Title, StyleProvider } from 'native-base';
 
 function App(){
   return(
+    <StyleProvider style={getTheme(commonColor)}>
     <Container>
-      <Header hasTabs style={{backgroundColor: 'WHITE', textColor: 'black'}}>
+      <Header hastabs transparent style={{height: 60, paddingTop: 15}}>
           <Left>
             <Button transparent>
               <Icon name='arrow-back' />
-              <Text>Back</Text>
             </Button>
           </Left>
-          <Body>
+          <Body >
           </Body>
           <Right>
           </Right>
@@ -26,7 +29,9 @@ function App(){
             <Company />
           </Tab>
         </Tabs>
+        
   </Container>
+  </StyleProvider>
   )
 }
 export default App;

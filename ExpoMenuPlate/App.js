@@ -34,7 +34,7 @@ export default class App extends React.Component {
     return (
       <StyleProvider style={getTheme(material)}>      
       <Container>
-        <Login />
+        <Home />
       </Container>
       </StyleProvider>
     );

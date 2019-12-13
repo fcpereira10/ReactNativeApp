@@ -35,7 +35,7 @@ export default class RegisterCostumer extends Component {
             <Input secureTextEntry={true} placeholder='Password'/>
           </Item>
           <Button rounded>
-            <Text style={{fontSize: 17}}> Entrar </Text>
+            <Text style={{fontSize: 17}}> Registar </Text>
           </Button>
           <View style={{paddingTop: 20, paddingBottom: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row',marginTop: 4}}>
             <Text style={{fontSize: 17}}>Já tem uma conta? </Text>

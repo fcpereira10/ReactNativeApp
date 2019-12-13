@@ -45,7 +45,7 @@ export default (variables /* : * */ = variable) => {
     '.transparent': {
       backgroundColor: 'transparent',
       borderBottomColor: 'transparent',
-      toolbarBtnColor: '#000000',
+      toolbarBtnColor: '#555555',
       elevation: 0,
       shadowColor: null,
       shadowOffset: null,
@@ -71,7 +71,9 @@ export default (variables /* : * */ = variable) => {
       shadowOffset: null,
       shadowRadius: null,
       shadowOpacity: null,
-      borderBottomWidth: null
+      borderBottomWidth: null,
+      backgroundColor: 'transparent',
+      
     },
     '.hasSegment': {
       elevation: 0,
