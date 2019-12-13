@@ -18,14 +18,13 @@ export default class Home extends Component {
             content={<SideBar />} >
                 <StyleProvider style={getTheme(commonColor)}>
             <Container>
-                <Header transparent>
+                <Header transparent style={{height: 60, paddingTop: 15}}>
                     <Left>
                         <Button transparent onPress={this.openDrawer.bind(this)}>
                             <Icon name='menu'/>
                         </Button>    
                     </Left>
                     <Body>
-                    <Title><Text> title </Text></Title>
                     </Body>  
                     <Right>
                     </Right> 
@@ -34,12 +33,25 @@ export default class Home extends Component {
                   
                 </Content>
                 <Footer>
-          <FooterTab>
-            <Button full>
-              <Text>Footer</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+                    <FooterTab>
+                        <Button vertical>
+                        <Icon name="apps" />
+
+                        </Button>
+                        <Button vertical>
+                        <Icon name="camera" />
+
+                        </Button>
+                        <Button vertical active>
+                        <Icon active name="navigate" />
+
+                        </Button>
+                        <Button vertical>
+                        <Icon name="person" />
+
+                        </Button>
+                    </FooterTab>
+                    </Footer>
             </Container>
             </StyleProvider>
           </Drawer>
