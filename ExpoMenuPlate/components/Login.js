@@ -34,36 +34,30 @@ export default class Login extends Component {
   };
 
   handleLogin = () => {
-    // fazer as verificações de email valido e tamanho da password aqui
+    // fazer as verificações de email valido e tamanho da password aqui 192.168.6.180
 
-    axios.get('https://google.com').then((response) => {
-      console.log(response);
-    })
+    getAxiosInstance().post('/user/login', this.state) // alterar aqui se o state for alterado
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.errors.length !== 0) {
+          response.data.errors.forEach(error => {
+            if (error.code === 'no_user') {
+              // mostrar erro 'Utilizador não existe'
+            } else if (error.code === 'wrong_password') {
+              // mostrar erro 'Password errada'
+            } else if (error.code === 'db_error') {
+              // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
+            }
+          });
+        } else {
+          setAccessToken(response.data.token);
+          // mostrar mensagem a dizer que logou com sucesso e ir para home
+        }
+      })
       .catch((error) => {
         console.log(error);
+        // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
       });
-
-    // getAxiosInstance().post('/user/login', this.state) // alterar aqui se o state for alterado
-    //   .then((response) => {
-    //     if (response.data.errors.length !== 0) {
-    //       response.data.errors.forEach(error => {
-    //         if (error.code === 'no_user') {
-    //           // mostrar erro 'Utilizador não existe'
-    //         } else if (error.code === 'wrong_password') {
-    //           // mostrar erro 'Password errada'
-    //         } else if (error.code === 'db_error') {
-    //           // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
-    //         }
-    //       });
-    //     } else {
-    //       setAccessToken(response.data.token);
-    //       // mostrar mensagem a dizer que logou com sucesso e ir para home
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
-    //   });
   };
 
   render() {
@@ -71,7 +65,7 @@ export default class Login extends Component {
     return (
       <StyleProvider style={getTheme(commonColor)}>
         <Container>
-          <Header transparent style={{height: 60, paddingTop: 15}}>
+          <Header transparent style={{ height: 60, paddingTop: 15 }}>
             <Left>
               <Button transparent>
                 <Icon name='arrow-back' />
