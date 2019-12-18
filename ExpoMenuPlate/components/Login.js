@@ -6,7 +6,6 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
 import { getAxiosInstance } from '../util/axios';
 import { setAccessToken } from '../util/authentication';
-import axios from 'axios';
 
 export default class Login extends Component {
   constructor(props) {
@@ -22,8 +21,6 @@ export default class Login extends Component {
       ...this.state,
       email: text
     });
-
-    console.log(this.state);
   };
 
   handlePasswordTextChange = (text) => {
@@ -34,7 +31,7 @@ export default class Login extends Component {
   };
 
   handleLogin = () => {
-    // fazer as verificações de email valido e tamanho da password aqui 192.168.6.180
+    // fazer as verificações de email valido e tamanho da password aqui
 
     getAxiosInstance().post('/user/login', this.state) // alterar aqui se o state for alterado
       .then((response) => {

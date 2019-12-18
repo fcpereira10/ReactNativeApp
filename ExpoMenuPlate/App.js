@@ -7,7 +7,7 @@ import Login from './screens/LoginScreen';
 import Register from './screens/RegisterScreen';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
-import { StyleProvider, Container } from 'native-base';
+import { StyleProvider, Container, Root } from 'native-base';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ export default class App extends React.Component {
     return (
       <StyleProvider style={getTheme(material)}>
         <Container>
-          <Login />
+          <Home />
         </Container>
       </StyleProvider>
     );
