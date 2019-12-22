@@ -7,7 +7,26 @@ import Login from './screens/LoginScreen';
 import Register from './screens/RegisterScreen';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { StyleProvider, Container, Root } from 'native-base';
+
+const AppNavigator = createStackNavigator({
+  Login: { screen: Login },
+  Home: { screen: Home }
+},
+{
+  initialRouteName: "Home"
+},
+{
+  defaultNavigationOptions: {
+    header: null
+  }
+}
+);
+
+
+const AppContainer = createAppContainer(AppNavigator);
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -33,10 +52,9 @@ export default class App extends React.Component {
 
     return (
       <StyleProvider style={getTheme(material)}>
-        <Container>
-          <Home />
-        </Container>
+          <AppContainer />
       </StyleProvider>
     );
   }
 }
+
