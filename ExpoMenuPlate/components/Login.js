@@ -9,6 +9,10 @@ import { setAccessToken } from '../util/authentication';
 import { withNavigation } from 'react-navigation';
 
  class Login extends Component {
+  static navigationOptions = {
+    title: 'Login',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +20,7 @@ import { withNavigation } from 'react-navigation';
       password: ''
     };
   }
+
 
   handleEmailTextChange = (text) => {
     this.setState({
@@ -63,11 +68,8 @@ import { withNavigation } from 'react-navigation';
     return (
       <StyleProvider style={getTheme(commonColor)}>
         <Container>
-          <Header transparent style={{ height: 60, paddingTop: 15 }}>
+          <Header transparent style={{ height: 0, paddingTop: 0 }}>
             <Left>
-              <Button transparent>
-                <Icon name='arrow-back' />
-              </Button>
             </Left>
             <Body>
             </Body>
@@ -90,7 +92,7 @@ import { withNavigation } from 'react-navigation';
               <View style={{ paddingTop: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: 4 }}>
                 <Text style={{ fontSize: 17 }}>Ainda não tem uma Conta? </Text>
                 <TouchableOpacity>
-                  <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Registar</Text>
+                  <Text style={{ fontSize: 17, color: '#FF8B2D' }} onPress={() => this.props.navigation.navigate('Register')}>Registar</Text>
                 </TouchableOpacity>
               </View>
             </Form>

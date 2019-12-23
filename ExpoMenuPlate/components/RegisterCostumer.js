@@ -119,7 +119,7 @@ class RegisterCostumer extends Component {
               <View style={{ paddingTop: 20, paddingBottom: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: 4 }}>
                 <Text style={{ fontSize: 17 }}>Já tem uma conta? </Text>
                 <TouchableOpacity>
-                  <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Entrar</Text>
+                  <Text style={{ fontSize: 17, color: '#FF8B2D' }} onPress={() => this.props.navigation.navigate('Login')}>Entrar</Text>
                 </TouchableOpacity>
               </View>
 

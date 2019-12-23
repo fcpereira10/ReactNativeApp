@@ -16,17 +16,26 @@ const AppNavigator = createStackNavigator({
   Login: { screen: Login },
   Home: { screen: Home },
   Profile: {screen: Profile},
+  Register: {screen: Register},
 },
 {
-  initialRouteName: "Home"
-},
-{
+  initialRouteName: 'Home',
+  /* The header config from HomeScreen is now here */
   defaultNavigationOptions: {
-    header: null
-  }
+    headerStyle: {
+      backgroundColor: '#fff' , borderBottomColor:'transparent',borderBottomWidth: 0 ,
+      
+    },
+    headerBackTitle: null,
+    headerTintColor: '#FF7A00',
+  },
 }
 );
 
+const navigationOptions = {
+  title: 'Home',
+  /* No more header config here! */
+};
 
 const AppContainer = createAppContainer(AppNavigator);
 
@@ -49,7 +58,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     if (!this.state.isReady) {
       return <AppLoading />;
     }

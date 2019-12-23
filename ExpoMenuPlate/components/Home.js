@@ -7,10 +7,15 @@ import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 
 class Home extends Component {
+    static navigationOptions = {
+        title: 'Home',
+      };
 
     constructor(props){
         super(props);
     }
+
+   
 
     componentDidMount = () => {
     };
@@ -28,7 +33,7 @@ class Home extends Component {
                             </Item>
                         
                         
-                            <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
+                            <Button transparent onPress={() => this.props.navigation.navigate('Login')}>
                                 <Icon name="person" />
                             </Button>
                         

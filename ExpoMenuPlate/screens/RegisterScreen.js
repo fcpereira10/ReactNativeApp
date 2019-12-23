@@ -10,11 +10,8 @@ function App(){
   return(
     <StyleProvider style={getTheme(commonColor)}>
     <Container>
-      <Header hastabs transparent style={{height: 60, paddingTop: 15}}>
+      <Header hastabs transparent style={{height: 0, paddingTop: 0}}>
           <Left>
-            <Button transparent>
-              <Icon name='arrow-back' />
-            </Button>
           </Left>
           <Body >
           </Body>
