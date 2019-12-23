@@ -6,7 +6,7 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 
-class Home extends Component {
+class Profile extends Component {
 
     constructor(props){
         super(props);
@@ -33,12 +33,10 @@ class Home extends Component {
                             </Button>
                         
                     </Header>
-
-                    <RestaurantCard />
                 </Container>
             </StyleProvider>
         );
 
     }
 }
-export default withNavigation(Home);
+export default withNavigation(Profile);

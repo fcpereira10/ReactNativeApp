@@ -6,8 +6,9 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
 import { getAxiosInstance } from '../util/axios';
 import { setAccessToken } from '../util/authentication';
+import { withNavigation } from 'react-navigation';
 
-export default class Login extends Component {
+ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -99,3 +100,4 @@ export default class Login extends Component {
     );
   }
 }
+export default withNavigation(Login);

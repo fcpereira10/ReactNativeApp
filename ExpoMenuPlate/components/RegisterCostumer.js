@@ -5,8 +5,9 @@ import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
 import { getAxiosInstance } from '../util/axios';
+import { withNavigation } from 'react-navigation';
 
-export default class RegisterCostumer extends Component {
+class RegisterCostumer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -129,3 +130,4 @@ export default class RegisterCostumer extends Component {
     );
   }
 }
+export default withNavigation(RegisterCostumer);

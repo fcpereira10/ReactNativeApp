@@ -4,8 +4,9 @@ import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
+import { withNavigation } from 'react-navigation';
 
-export default class RegisterCompany extends Component {
+class RegisterCompany extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -132,3 +133,4 @@ export default class RegisterCompany extends Component {
     );
   }
 }
+export default withNavigation(RegisterCompany);

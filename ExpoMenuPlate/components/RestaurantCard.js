@@ -4,7 +4,8 @@ import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Ic
 import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
-export default class RestaurantCard extends Component {
+import { withNavigation } from 'react-navigation';
+class RestaurantCard extends Component {
   render() {
     return (
         <StyleProvider style={getTheme(commonColor)}>
@@ -43,3 +44,4 @@ export default class RestaurantCard extends Component {
     );
   }
 }
+export default withNavigation(RestaurantCard);
