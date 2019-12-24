@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider } from 'native-base';
+import { Container, Header, Thumbnail, Card, CardItem,H1, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider } from 'native-base';
 import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
@@ -8,7 +8,7 @@ import { withNavigation } from 'react-navigation';
 
 class Profile extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
@@ -19,22 +19,18 @@ class Profile extends Component {
         return (
             <StyleProvider style={getTheme(commonColor)}>
                 <Container>
-                    <Header searchBar rounded transparent style={{ height: 60, paddingTop: 15, paddingBottom: 15 }}>
-                        
-                        
-                            <Item style={{marginLeft: 15}}>
-                                <Icon name="search" />
-                                <Input  placeholder="Procurar" />
-                            </Item>
-                        
-                        
-                            <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
-                                <Icon name="person" />
-                            </Button>
-                        
-                    </Header>
+                    <Content padder>
+                        <Card transparent>
+                            <CardItem>
+                                <Body>
+                                    <Thumbnail source={require('../assets/images/person-icon.png')} style={{width: 80, height: 80, borderRadius: 80/2}}/>
+                                    <H1 style={{paddingTop: 20 ,alignSelf: 'center'}}>Francisco Pereira</H1>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </Content>
                 </Container>
-            </StyleProvider>
+            </StyleProvider >
         );
 
     }

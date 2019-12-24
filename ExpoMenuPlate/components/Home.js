@@ -33,7 +33,7 @@ class Home extends Component {
                             </Item>
                         
                         
-                            <Button transparent onPress={() => this.props.navigation.navigate('Login')}>
+                            <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
                                 <Icon name="person" />
                             </Button>
                         
