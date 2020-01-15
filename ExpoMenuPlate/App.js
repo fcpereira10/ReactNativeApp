@@ -15,21 +15,21 @@ import { StyleProvider, Container, Root } from 'native-base';
 const AppNavigator = createStackNavigator({
   Login: { screen: Login },
   Home: { screen: Home },
-  Profile: {screen: Profile},
-  Register: {screen: Register},
+  Profile: { screen: Profile },
+  Register: { screen: Register },
 },
-{
-  initialRouteName: 'Home',
-  /* The header config from HomeScreen is now here */
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#fff' , borderBottomColor:'transparent',borderBottomWidth: 0 ,
-      
+  {
+    initialRouteName: 'Home',
+    /* The header config from HomeScreen is now here */
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fff', borderBottomColor: 'transparent', borderBottomWidth: 0,
+
+      },
+      headerBackTitle: null,
+      headerTintColor: '#FF7A00',
     },
-    headerBackTitle: null,
-    headerTintColor: '#FF7A00',
-  },
-}
+  }
 );
 
 const navigationOptions = {
@@ -64,7 +64,7 @@ export default class App extends React.Component {
 
     return (
       <StyleProvider style={getTheme(material)}>
-          <AppContainer />
+        <AppContainer />
       </StyleProvider>
     );
   }
