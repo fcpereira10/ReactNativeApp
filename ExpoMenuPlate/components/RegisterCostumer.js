@@ -93,7 +93,7 @@ class RegisterCostumer extends Component {
       <StyleProvider style={getTheme(commonColor)}>
         <Container>
           <Content>
-            <Thumbnail large source={require('../assets/images/logo.png')} />
+          <Thumbnail large source={require('../assets/images/logo.png')} />
             <Form>
               <Item rounded>
                 <Input onChangeText={this.onFirstNameChange} placeholder='Primeiro Nome' />
