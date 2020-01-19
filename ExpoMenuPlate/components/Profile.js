@@ -5,6 +5,7 @@ import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
+import { Platform, View, TouchableOpacity } from "react-native";
 
 class Profile extends Component {
 
@@ -25,7 +26,7 @@ class Profile extends Component {
                                 <Body>
                                     <Thumbnail source={require('../assets/images/person-icon.png')} style={{width: 80, height: 80, borderRadius: 80/2}}/>
                                     <H1 style={{paddingTop: 20 ,alignSelf: 'center'}}>Nome do Utilizador</H1>
-                                    <Text style={{paddingTop: 5 ,alignSelf: 'center'}}>
+                                    <Text style={{paddingTop: 10 ,alignSelf: 'center'}}>
                                     <Icon name='navigate' />
                                     <H3 > Cidade</H3>
                                     </Text>
@@ -35,7 +36,13 @@ class Profile extends Component {
                         <Card transparent>
                             <CardItem>
                                 <Body>
-                                    <Button rounded style={{alignSelf: 'center'}}><Text style={{ fontSize: 17,  color: 'black'}}>Editar Perfil</Text></Button>
+                                    <Button rounded style={{width: 200, alignSelf: 'center'}}><Text style={{ fontSize: 17,  color: 'black'}}>Editar Perfil</Text></Button>
+                                    <Button rounded style={{width: 200, alignSelf: 'center'}}><Text style={{ fontSize: 17,  color: 'black'}}>Reservas</Text></Button>
+                                    <View style={{ paddingTop: 20, alignSelf: 'center', marginTop: 4 }}>
+                                        <TouchableOpacity>
+                                            <Text style={{fontSize: 17, color: '#FF8B2D'}} onPress={() => this.props.navigation.navigate('Login')}>Terminar Sessão</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </Body>
                             </CardItem>
                         </Card>
