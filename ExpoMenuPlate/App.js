@@ -24,7 +24,7 @@ const AppNavigator = createStackNavigator({
         style={{ 
           width: "100%",
         height: 125,
-        position: 'absolute', bottom: -20}}
+        position: 'absolute', bottom: -30}}
           source={require('./assets/images/bg.png')} 
         />
       ),
@@ -37,9 +37,10 @@ const AppNavigator = createStackNavigator({
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
-        headerTitle: '#ffff', borderBottomColor: 'transparent', borderBottomWidth: 0,
+        headerTitle: 'transparent', borderBottomColor: 'transparent', borderBottomWidth: 0,
         
       },
+      backgroundColor: 'transparent',
       headerBackTitle: null,
       headerTintColor: '#FF7A00',
     },

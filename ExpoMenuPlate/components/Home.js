@@ -34,15 +34,21 @@ class Home extends Component {
         return (
             <StyleProvider style={getTheme(commonColor)}>
                 <Container>
-                    <Header searchBar rounded transparent style={{ height: 60, paddingTop: 15, paddingBottom: 15 }}>
-                        <Item style={{ marginLeft: 15 }}>
-                            <Icon name="search" />
-                            <Input placeholder="Procurar" />
+                    <Header searchBar rounded transparent>
+
+                        <Item style={{flex:4}} >
+                            <Icon name="restaurant" style={{color: "#FF7A00"}} />
+                            <Input placeholder="Procurar Restaurante" placeholderTextColor="#FF7A00" style={{width:800}}/>
+                            
                         </Item>
+                        <Right>
                         <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
                             <Icon name="person" />
                         </Button>
+                        </Right>
+                 
                     </Header>
+                    <Body>
                     {this.state.list.map(element => {
                         console.log(element);
                         return (<RestaurantCard
@@ -52,6 +58,7 @@ class Home extends Component {
                             description={"falta isto"}
                             stars={"5"} />);
                     })}
+                    </Body>
                 </Container>
             </StyleProvider>
         );
