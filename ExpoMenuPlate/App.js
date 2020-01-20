@@ -10,25 +10,27 @@ import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { StyleProvider, Container, Root } from 'native-base';
-import {Image, View, StyleSheet, Header} from 'react-native' ; 
+import { Image, View, StyleSheet, Header } from 'react-native';
 
 
 const AppNavigator = createStackNavigator({
   Login: { screen: Login },
-  Home: { 
+  Home: {
     screen: Home,
     navigationOptions: {
       headerBackground: (
-        
+
         <Image
-        style={{ 
-          width: "100%",
-        height: 125,
-        position: 'absolute', bottom: -30}}
-          source={require('./assets/images/bg.png')} 
+          style={{
+            width: "100%",
+            height: 125,
+            position: 'absolute', bottom: -30
+          }}
+          source={require('./assets/images/bg.png')}
         />
       ),
-  }},
+    }
+  },
   Profile: { screen: Profile },
   Register: { screen: Register },
 },
@@ -38,7 +40,7 @@ const AppNavigator = createStackNavigator({
     defaultNavigationOptions: {
       headerStyle: {
         headerTitle: 'transparent', borderBottomColor: 'transparent', borderBottomWidth: 0,
-        
+
       },
       backgroundColor: 'transparent',
       headerBackTitle: null,
@@ -48,7 +50,7 @@ const AppNavigator = createStackNavigator({
 );
 
 const navigationOptions = {
-  title: 'Home',
+  title: 'Register',
   /* No more header config here! */
 };
 

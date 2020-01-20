@@ -35,30 +35,26 @@ class Home extends Component {
             <StyleProvider style={getTheme(commonColor)}>
                 <Container>
                     <Header searchBar rounded transparent>
-
-                        <Item style={{flex:4}} >
-                            <Icon name="restaurant" style={{color: "#FF7A00"}} />
-                            <Input placeholder="Procurar Restaurante" placeholderTextColor="#FF7A00" style={{width:800}}/>
-                            
+                        <Item style={{ flex: 4 }} >
+                            <Icon name="restaurant" style={{ color: "#FF7A00" }} />
+                            <Input placeholder="Procurar Restaurante" placeholderTextColor="#FF7A00" />
                         </Item>
                         <Right>
-                        <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
-                            <Icon name="person" />
-                        </Button>
+                            <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
+                                <Icon name="person" />
+                            </Button>
                         </Right>
-                 
                     </Header>
-                    <Body>
                     {this.state.list.map(element => {
                         console.log(element);
                         return (<RestaurantCard
+                            style={{height: '1000px !important'}}
                             key={element.address}
                             name={element.name}
                             address={element.address}
                             description={"falta isto"}
                             stars={"5"} />);
                     })}
-                    </Body>
                 </Container>
             </StyleProvider>
         );

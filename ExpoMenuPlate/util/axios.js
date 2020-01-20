@@ -5,7 +5,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 export const getAxiosInstance = () => {
     const instance = axios.create({
-        baseURL: 'http://10.0.2.2:5454',
+        baseURL: 'http://backend.menuplate.pt:9001',
         timeout: 5000,
     });
 
