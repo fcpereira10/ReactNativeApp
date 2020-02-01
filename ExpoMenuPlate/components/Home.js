@@ -40,7 +40,7 @@ class Home extends Component {
                             <Input placeholder="Procurar Restaurante" placeholderTextColor="#FF7A00" />
                         </Item>
                         <Right>
-                            <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
+                            <Button transparent onPress={() => this.props.navigation.navigate('Home')}>
                                 <Icon name="person" />
                             </Button>
                         </Right>
