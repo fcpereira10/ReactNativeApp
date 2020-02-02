@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Home from './screens/HomeScreen';
 import Login from './screens/LoginScreen';
 import Register from './screens/RegisterScreen';
+import Reservation from './screens/ReservationScreen';
 import Profile from './screens/ProfileScreen';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
@@ -33,9 +34,10 @@ const AppNavigator = createStackNavigator({
   },
   Profile: { screen: Profile },
   Register: { screen: Register },
+  Reservation: { screen: Reservation },
 },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Reservation',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {

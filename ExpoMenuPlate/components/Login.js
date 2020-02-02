@@ -87,7 +87,7 @@ import { withNavigation } from 'react-navigation';
                 <Input secureTextEntry={true} placeholder='Password' onChangeText={this.handlePasswordTextChange} />
               </Item>
               <Button rounded onPress={this.handleLogin}>
-                <Text style={{ fontSize: 17 }}>Entrar</Text>
+                <Text style={{ fontSize: 20, color: "#fff" }}>Entrar</Text>
               </Button>
               <View style={{ paddingTop: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginTop: 4 }}>
                 <Text style={{ fontSize: 17 }}>Ainda não tem uma Conta? </Text>
