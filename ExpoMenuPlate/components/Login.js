@@ -8,7 +8,7 @@ import { getAxiosInstance } from '../util/axios';
 import { setAccessToken } from '../util/authentication';
 import { withNavigation } from 'react-navigation';
 
- class Login extends Component {
+class Login extends Component {
   static navigationOptions = {
     title: 'Login',
   };

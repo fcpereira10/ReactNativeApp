@@ -37,7 +37,7 @@ const AppNavigator = createStackNavigator({
   Reservation: { screen: Reservation },
 },
   {
-    initialRouteName: 'Reservation',
+    initialRouteName: 'Home',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
