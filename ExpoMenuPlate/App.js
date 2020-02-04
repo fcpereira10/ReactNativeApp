@@ -6,6 +6,7 @@ import Home from './screens/HomeScreen';
 import Login from './screens/LoginScreen';
 import Register from './screens/RegisterScreen';
 import Reservation from './screens/ReservationScreen';
+import History from './screens/ReservationHistoryScreen';
 import Profile from './screens/ProfileScreen';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
@@ -34,10 +35,18 @@ const AppNavigator = createStackNavigator({
   },
   Profile: { screen: Profile },
   Register: { screen: Register },
-  Reservation: { screen: Reservation },
+  History: { screen: History,
+    navigationOptions: {
+      title: 'Histórico de Reservas'
+    } },
+  Reservation: { screen: Reservation,
+  navigationOptions: {
+    title: 'Reserva'
+  }
+  },
 },
   {
-    initialRouteName: 'Reservation',
+    initialRouteName: 'History',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
