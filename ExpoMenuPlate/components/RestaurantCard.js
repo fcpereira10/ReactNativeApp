@@ -9,7 +9,7 @@ import { withNavigation } from 'react-navigation';
 class RestaurantCard extends Component {
 
   handleRestaurantClick = () => {
-    this.props.navigation.navigate('Reservation', { name: this.props.name });
+    this.props.navigation.navigate('Reservation', { name: this.props.name, companyId: this.props.companyId });
   }
 
   render() {

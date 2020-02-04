@@ -48,7 +48,6 @@ class Home extends Component {
                         </Right>
                     </Header>
                     {this.state.list.map(element => {
-                        console.log(element);
                         return (
                             <RestaurantCard
                                 navigation={this.props.navigation}
@@ -57,6 +56,7 @@ class Home extends Component {
                                 name={element.name}
                                 address={element.address}
                                 description={"falta isto"}
+                                companyId={element._id}
                                 stars={"5"} />
                         );
                     })}
