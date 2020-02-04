@@ -46,7 +46,7 @@ const AppNavigator = createStackNavigator({
   },
 },
   {
-    initialRouteName: 'History',
+    initialRouteName: 'Home',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {

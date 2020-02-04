@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider } from 'native-base';
+import { Container, Header, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider, TouchableOpacity } from 'native-base';
 import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
@@ -21,8 +21,10 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
+        console.log("did mount");
         getAxiosInstance().get('/company/list')
             .then((response) => {
+                console.log(response);
                 this.setState({ list: response.data });
             })
             .catch((error) => {
@@ -47,13 +49,16 @@ class Home extends Component {
                     </Header>
                     {this.state.list.map(element => {
                         console.log(element);
-                        return (<RestaurantCard
-                            style={{height: '1000px !important'}}
-                            key={element.address}
-                            name={element.name}
-                            address={element.address}
-                            description={"falta isto"}
-                            stars={"5"} />);
+                        return (
+                            <RestaurantCard
+                                navigation={this.props.navigation}
+                                style={{ height: '1000px !important' }}
+                                key={element.address}
+                                name={element.name}
+                                address={element.address}
+                                description={"falta isto"}
+                                stars={"5"} />
+                        );
                     })}
                 </Container>
             </StyleProvider>
