@@ -9,11 +9,16 @@ import { Platform, View, TouchableOpacity } from "react-native";
 
 class RestaurantProfile extends Component {
 
+    static navigationOptions = {
+        title: 'RestaurantProfile',
+    };
+
     constructor(props) {
         super(props);
     }
 
     componentDidMount = () => {
+        console.log(this.props);
     };
 
     render() {
@@ -36,7 +41,7 @@ class RestaurantProfile extends Component {
                                 <Icon name="navigate" style={{ color: "#555555" }} /><Text>Rua Santa Catarina, 102, Leça da Palmeira 4450, Portugal</Text>
                             </CardItem>
                             <CardItem>
-                                <Icon name="star" style={{ color: "#555555" }} /><Text>4 estrelas</Text>
+                                <Icon name="star" style={{ color: "#555555" }} /><Text>{this.props.companyId}</Text>
                             </CardItem>
                         </Card>
                         <Card>
@@ -44,13 +49,13 @@ class RestaurantProfile extends Component {
                                 <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Detalhes</Text>
                             </CardItem>
                             <CardItem>
-                            <Text style={{ fontSize: 17, color: '#555555' }}>Opções sem glúten
+                                <Text style={{ fontSize: 17, color: '#555555' }}>Opções sem glúten
                             {"\n"}
+                                    {"\n"}
+                                    Mediterrâneo, Europeia, Portuguesa
                             {"\n"}
-                            Mediterrâneo, Europeia, Portuguesa
-                            {"\n"}
-                            {"\n"}
-                            Almoço, Jantar
+                                    {"\n"}
+                                    Almoço, Jantar
                             </Text>
                             </CardItem>
                         </Card>
@@ -59,7 +64,6 @@ class RestaurantProfile extends Component {
                 </Container>
             </StyleProvider >
         );
-
     }
 }
 export default withNavigation(RestaurantProfile);

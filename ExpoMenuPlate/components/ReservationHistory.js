@@ -7,13 +7,43 @@ import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 import { Platform, View, TouchableOpacity } from "react-native";
 
-class ReservationHistory extends Component {
+const ReservationItem = (props) => {
+    return (
+        <Card>
+            <CardItem Header bordered>
+                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>{props.reservation.name}</Text>
+            </CardItem>
+            <CardItem>
+                <Icon name="calendar" style={{ color: "#555555" }} /><Text>{props.reservation.date}</Text>
+            </CardItem>
+            <CardItem>
+                <Icon name="time" style={{ color: "#555555" }} /><Text>{props.reservation.time}</Text>
+            </CardItem>
+            <CardItem>
+                <Icon name="people" style={{ color: "#555555" }} /><Text>{props.reservation.people}</Text>
+            </CardItem>
+        </Card>
+    );
+}
 
+class ReservationHistory extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            reservations: []
+        };
     }
 
     componentDidMount = () => {
+        /*console.log("did mount");
+        getAxiosInstance().get('/user/reservations')
+            .then((response) => {
+                this.setState({ reservations: response.data });
+            })
+            .catch((error) => {
+                console.log(error);
+            });*/
     };
 
     render() {
@@ -28,9 +58,17 @@ class ReservationHistory extends Component {
                                 </Body>
                             </CardItem>
                         </Card>
+                        {/* 
+                        {this.state.reservations.map(element => {
+                            return (
+                                <ReservationItem reservation={element} />
+                            );
+                        })} */}
+
+
                         <Card>
                             <CardItem Header bordered>
-                            <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Nome do Restaurante</Text>
+                                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Nome do Restaurante</Text>
                             </CardItem>
                             <CardItem>
                                 <Icon name="calendar" style={{ color: "#555555" }} /><Text>07/02/2020</Text>
@@ -44,7 +82,7 @@ class ReservationHistory extends Component {
                         </Card>
                         <Card>
                             <CardItem Header bordered>
-                            <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Bar do ISP</Text>
+                                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Bar do ISP</Text>
                             </CardItem>
                             <CardItem>
                                 <Icon name="calendar" style={{ color: "#555555" }} /><Text>11/02/2020</Text>

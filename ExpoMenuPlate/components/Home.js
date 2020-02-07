@@ -52,8 +52,6 @@ class Home extends Component {
                             <RestaurantCard
                                 onPress={() => this.props.navigation.navigate('Reservation')}
                                 navigation={this.props.navigation}
-                                style={{ height: '1000px !important' }}
-                                key={element.address}
                                 name={element.name}
                                 address={element.address}
                                 description={"falta isto"}
