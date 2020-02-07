@@ -8,6 +8,7 @@ import Register from './screens/RegisterScreen';
 import Reservation from './screens/ReservationScreen';
 import History from './screens/ReservationHistoryScreen';
 import RestaurantProfile from './screens/RestaurantProfileScreen';
+import Comment from './screens/CommentScreen';
 import Profile from './screens/ProfileScreen';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
@@ -37,6 +38,7 @@ const AppNavigator = createStackNavigator({
   Profile: { screen: Profile },
   Register: { screen: Register },
   RestaurantProfile: { screen: RestaurantProfile },
+  Comment: { screen: Comment },
   History: {
     screen: History,
     navigationOptions: {
@@ -51,7 +53,7 @@ const AppNavigator = createStackNavigator({
   },
 },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Comment',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
