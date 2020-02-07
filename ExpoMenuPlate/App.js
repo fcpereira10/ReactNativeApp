@@ -48,7 +48,7 @@ const AppNavigator = createStackNavigator({
   },
 },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'RestaurantProfile',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
