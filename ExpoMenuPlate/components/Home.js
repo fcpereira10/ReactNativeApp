@@ -22,11 +22,10 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
-        console.log("did mount");
         getAxiosInstance().get('/company/list')
             .then((response) => {
                 console.log(response);
-                this.setState({ list: response.data });
+                this.setState({ list: response.data.reverse() });
             })
             .catch((error) => {
                 console.log(error);

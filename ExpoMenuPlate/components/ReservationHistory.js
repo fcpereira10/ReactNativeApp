@@ -6,21 +6,24 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 import { Platform, View, TouchableOpacity } from "react-native";
+import { getPayload } from '../util/authentication';
+import { getAxiosInstance } from '../util/axios';
 
 const ReservationItem = (props) => {
+    console.log(props);
     return (
         <Card>
             <CardItem Header bordered>
-                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>{props.reservation.name}</Text>
+                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>{props.reservation.restaurantName}</Text>
             </CardItem>
             <CardItem>
-                <Icon name="calendar" style={{ color: "#555555" }} /><Text>{props.reservation.date}</Text>
+                <Icon name="calendar" style={{ color: "#555555" }} /><Text>{props.reservation.day.split('T')[0]}</Text>
             </CardItem>
             <CardItem>
                 <Icon name="time" style={{ color: "#555555" }} /><Text>{props.reservation.time}</Text>
             </CardItem>
             <CardItem>
-                <Icon name="people" style={{ color: "#555555" }} /><Text>{props.reservation.people}</Text>
+                <Icon name="people" style={{ color: "#555555" }} /><Text>{props.reservation.totalPeople}</Text>
             </CardItem>
         </Card>
     );
@@ -35,15 +38,16 @@ class ReservationHistory extends Component {
         };
     }
 
-    componentDidMount = () => {
-        /*console.log("did mount");
-        getAxiosInstance().get('/user/reservations')
+    componentDidMount = async () => {
+        const payload = await getPayload();
+
+        getAxiosInstance().get('/user/reservations?id=' + payload.userId)
             .then((response) => {
                 this.setState({ reservations: response.data });
             })
             .catch((error) => {
                 console.log(error);
-            });*/
+            });
     };
 
     render() {
@@ -58,15 +62,16 @@ class ReservationHistory extends Component {
                                 </Body>
                             </CardItem>
                         </Card>
-                        {/* 
-                        {this.state.reservations.map(element => {
-                            return (
-                                <ReservationItem reservation={element} />
-                            );
-                        })} */}
+                        {
+                            this.state.reservations.map(element => {
+                                return (
+                                    <ReservationItem reservation={element} />
+                                );
+                            })
+                        }
 
 
-                        <Card>
+                        {/* <Card>
                             <CardItem Header bordered>
                                 <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Nome do Restaurante</Text>
                             </CardItem>
@@ -93,7 +98,7 @@ class ReservationHistory extends Component {
                             <CardItem>
                                 <Icon name="people" style={{ color: "#555555" }} /><Text>2 Pessoas</Text>
                             </CardItem>
-                        </Card>
+                        </Card> */}
                     </Content>
                 </Container>
             </StyleProvider >

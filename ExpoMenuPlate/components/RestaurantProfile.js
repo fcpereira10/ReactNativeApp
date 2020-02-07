@@ -6,6 +6,7 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 import { Platform, View, TouchableOpacity } from "react-native";
+import { isAuthenticated } from '../util/authentication';
 
 class RestaurantProfile extends Component {
 
@@ -25,7 +26,7 @@ class RestaurantProfile extends Component {
         let totalRating = 0;
 
         this.state.restaurant.comments.forEach(comment => {
-            if(comment.status === 1) {
+            if (comment.status === 1) {
                 totalRating += comment.stars;
             }
         });
@@ -35,6 +36,14 @@ class RestaurantProfile extends Component {
             rating: this.state.restaurant.comments.length > 0 && totalRating / this.state.restaurant.comments.length != 0 ? (totalRating / this.state.restaurant.comments.length).toFixed(2) : "Unavaliable"
         });
     };
+
+    newReservationClicked = async () => {
+        if (await isAuthenticated()) {
+            this.props.navigation.navigate('Reservation', { restaurant: this.state.restaurant });
+        } else {
+            this.props.navigation.navigate('Login');
+        }
+    }
 
     render() {
         return (
@@ -81,7 +90,7 @@ class RestaurantProfile extends Component {
                             <CardItem>
                                 <List>
                                     {this.state.restaurant.comments.map(element => {
-                                        if(element.status === 1) {
+                                        if (element.status === 1) {
                                             return (
                                                 <ListItem>
                                                     <Text>{element.username} ({element.stars}☆): {element.comment}</Text>
@@ -94,7 +103,7 @@ class RestaurantProfile extends Component {
                                 </List>
                             </CardItem>
                         </Card>
-                        <Button primary onPress={() => this.props.navigation.navigate('Reservation', {restaurant: this.state.restaurant})}><Text>Reservar</Text></Button>
+                        <Button primary onPress={() => this.newReservationClicked()}><Text>Reservar</Text></Button>
                     </Content>
                 </Container>
             </StyleProvider >

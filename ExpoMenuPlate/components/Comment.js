@@ -1,58 +1,86 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Body, Button, Icon} from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Body, Button, Icon } from 'native-base';
 import { withNavigation } from 'react-navigation';
+import { getAxiosInstance } from '../util/axios';
+import { isAuthenticated } from '../util/authentication';
+
+const CommentItem = (props) => {
+  return (
+    <Card>
+      <CardItem>
+        <Body>
+          <Text>
+            {props.comment.comment}
+          </Text>
+        </Body>
+      </CardItem>
+      <CardItem footer>
+        <Text>{props.comment.username}</Text>
+      </CardItem>
+      <CardItem >
+        <Button iconLeft primary onPress={() => props.onEdit(props.comment._id, 1)}>
+          <Icon name='bookmarks' />
+          <Text>Aprovar</Text>
+        </Button>
+        <Button iconRight danger onPress={() => props.onEdit(props.comment._id, 2)}>
+          <Text>Remover</Text>
+          <Icon name='trash' />
+        </Button>
+      </CardItem>
+    </Card>
+  );
+}
 
 class Comment extends Component {
+  static navigationOptions = {
+    title: 'Comment',
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list: []
+    }
+  }
+
+  editComment = (id, status) => {
+    getAxiosInstance().get('/company/editcomment?id=' + id + "&status=" + status)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  updateComments = () => {
+    getAxiosInstance().get('/company/allcomments')
+      .then((response) => {
+        this.setState({ list: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  componentDidMount = () => {
+    this.updateComments();
+  };
+
   render() {
     return (
       <Container>
         <Header />
         <Content>
-          <Card>
-            <CardItem>
-              <Body>
-                <Text>
-                Menu de 12€ bom. Comida boa e bem apresentada. Serviço fraco. Ninguém para nos receber na sala quando cheguei. Deu pena. 
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem footer>
-              <Text>Toni Bagaços</Text>
-            </CardItem>
-            <CardItem >
-                <Button iconLeft primary>
-                <Icon name='bookmarks' />
-                <Text>Aprovar</Text>
-                </Button>
-                <Button iconRight danger>
-                <Text>Remover</Text>
-                <Icon name='trash' />
-                </Button>
-            </CardItem>
-         </Card>
-
-         <Card>
-            <CardItem>
-              <Body>
-                <Text>
-                Optimo! lugar muito elegante, comida de alta qualidade e serviço personnalizado parabens 
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem footer>
-              <Text>Carlos Castro</Text>
-            </CardItem>
-            <CardItem >
-                <Button iconLeft primary>
-                <Icon name='bookmarks' />
-                <Text>Aprovar</Text>
-                </Button>
-                <Button iconRight danger>
-                <Text>Remover</Text>
-                <Icon name='trash' />
-                </Button>
-            </CardItem>
-         </Card>
+          {this.state.list.map(element => {
+            return (
+              <CommentItem
+                navigation={this.props.navigation}
+                onEdit={this.editComment}
+                comment={element} />
+            );
+          })}
         </Content>
       </Container>
     );

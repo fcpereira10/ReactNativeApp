@@ -5,6 +5,7 @@ import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import { withNavigation } from 'react-navigation';
 import { getAxiosInstance } from '../util/axios';
+import { getPayload } from '../util/authentication';
 
 const MenuItem = (props) => {
   const [checked, setChecked] = useState(false);
@@ -29,21 +30,36 @@ class Reservation extends Component {
 
   constructor(props) {
     super(props);
-    this.setDate = this.setDate.bind(this);
     this.state = {
-      selected2: undefined,
-      chosenDate: new Date(),
+      totalPeople: "",
+      chosenDate: "",
       menuList: [],
       selectedMenu: [],
+      time: "",
       restaurant: this.props.navigation.getParam('restaurant', null)
     };
+
+    this.setDate = this.setDate.bind(this);
   }
 
-  onValueChange2(value) {
-    this.setState({
-      ...this.state,
-      selected2: value
-    });
+  onReservationPress = async () => {
+    const payload = await getPayload();
+
+    getAxiosInstance().post('/company/addreservation', {
+      companyId: this.state.restaurant._id,
+      userId: payload.userId,
+      order: this.state.selectedMenu,
+      people: this.state.totalPeople,
+      day: this.state.chosenDate,
+      time: this.state.time,
+    })
+      .then(async (response) => {
+        console.log(response.data);
+        this.props.navigation.navigate('Home');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   onMenuItemClicked = (item) => {
@@ -71,7 +87,9 @@ class Reservation extends Component {
   }
 
   setDate(newDate) {
-    this.setState({ ...this.state, chosenDate: newDate });
+    this.setState({
+      ...this.state, chosenDate: newDate
+    });
   }
 
   componentDidMount = () => {
@@ -85,6 +103,21 @@ class Reservation extends Component {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  onTimeChanged = (value) => {
+    console.log(value);
+    this.setState({
+      ...this.state,
+      time: value
+    });
+  };
+
+  onPeopleChanged = (value) => {
+    this.setState({
+      ...this.state,
+      totalPeople: value
+    });
   };
 
   render() {
@@ -118,20 +151,19 @@ class Reservation extends Component {
                 <Picker
                   mode="dropdown"
                   iosIcon={<Icon name="time" style={{ color: "#555555" }} />}
-                  style={{ width: undefined }}
                   placeholder="Horário Pretendido"
                   placeholderStyle={{ color: "#555555" }}
                   placeholderIconColor="#FF7A00"
-                  selectedValue={this.state.selected2}
-                  onValueChange={this.onValueChange2.bind(this)}
+                  selectedValue={this.state.time}
+                  onValueChange={this.onTimeChanged}
                   renderHeader={backAction =>
                     <Header transparent style={{ height: 50 }}><Left><Button transparent onPress={backAction}><Icon name="arrow-back" style={{ color: "#FF7A00" }} /></Button></Left><Body style={{ flex: 3 }}><Title style={{ color: "#fff" }}>Horário</Title></Body><Right /></Header>}>
-                  <Picker.Item label="Almoço - 12h00" value="key0" />
-                  <Picker.Item label="Almoço - 13h00" value="key1" />
-                  <Picker.Item label="Almoço - 14h00" value="key2" />
-                  <Picker.Item label="Jantar - 19h00" value="key3" />
-                  <Picker.Item label="Jantar - 20h00" value="key4" />
-                  <Picker.Item label="Jantar - 21h00" value="key5" />
+                  <Picker.Item label="Almoço - 12h00" value="Almoço - 12h00" />
+                  <Picker.Item label="Almoço - 13h00" value="Almoço - 13h00" />
+                  <Picker.Item label="Almoço - 14h00" value="Almoço - 14h00" />
+                  <Picker.Item label="Jantar - 19h00" value="Jantar - 19h00" />
+                  <Picker.Item label="Jantar - 20h00" value="Jantar - 20h00" />
+                  <Picker.Item label="Jantar - 21h00" value="Jantar - 21h00" />
                 </Picker>
 
               </Item>
@@ -139,25 +171,23 @@ class Reservation extends Component {
                 <Picker
                   mode="dropdown"
                   iosIcon={<Icon name="people" style={{ color: "#555555" }} />}
-                  style={{ width: undefined }}
                   placeholder="Número de Pessoas"
                   placeholderStyle={{ color: "#555555" }}
                   placeholderIconColor="#FF7A00"
-                  selectedValue={this.state.selected2}
-                  onValueChange={this.onValueChange2.bind(this)}
+                  selectedValue={this.state.totalPeople}
+                  onValueChange={this.onPeopleChanged}
                   renderHeader={backAction =>
                     <Header transparent style={{ height: 50 }}><Left><Button transparent onPress={backAction}><Icon name="arrow-back" style={{ color: "#FF7A00" }} /></Button></Left><Body style={{ flex: 3 }}><Title style={{ color: "#fff" }}>Número de Pessoas</Title></Body><Right /></Header>}>
-                  <Picker.Item label="1 Pessoa" value="key0" />
-                  <Picker.Item label="2 Pessoas" value="key1" />
-                  <Picker.Item label="3 Pessoas" value="key2" />
-                  <Picker.Item label="4 Pessoas" value="key3" />
-                  <Picker.Item label="5 Pessoas" value="key4" />
-                  <Picker.Item label="6 Pessoas" value="key5" />
+                  <Picker.Item label="1 Pessoa" value="1 Pessoa" />
+                  <Picker.Item label="2 Pessoas" value="2 Pessoas" />
+                  <Picker.Item label="3 Pessoas" value="3 Pessoas" />
+                  <Picker.Item label="4 Pessoas" value="4 Pessoas" />
+                  <Picker.Item label="5 Pessoas" value="5 Pessoas" />
+                  <Picker.Item label="6 Pessoas" value="6 Pessoas" />
                 </Picker>
               </Item>
             </Form>
             <List>
-
               <Text>Menu</Text>
               {this.state.menuList.map(element => {
                 return (
@@ -169,7 +199,7 @@ class Reservation extends Component {
               })}
             </List>
             <Textarea rowSpan={5} bordered placeholder="Notas" />
-            <Button rounded>
+            <Button rounded onPress={() => this.onReservationPress()}>
               <Text style={{ fontSize: 20, color: "#fff" }}>Reservar</Text>
             </Button>
           </Content>

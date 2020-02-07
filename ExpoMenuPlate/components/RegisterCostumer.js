@@ -37,7 +37,7 @@ class RegisterCostumer extends Component {
             }
           });
         } else {
-          // mostrar mensagem a dizer que registou com sucesso. redirecionar para o login
+          this.props.navigation.navigate('Login');
         }
       })
       .catch((error) => {
@@ -75,6 +75,7 @@ class RegisterCostumer extends Component {
   }
 
   onNIFChange = (text) => {
+    console.log(text);
     this.setState({
       ...this.state,
       nif: text

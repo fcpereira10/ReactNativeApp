@@ -5,6 +5,7 @@ import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
 import { withNavigation } from 'react-navigation';
+import { getAxiosInstance } from '../util/axios';
 
 class RegisterCompany extends Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class RegisterCompany extends Component {
   }
 
   handleRegister = () => {
-    // fazer as verificações de email valido e tamanho da password aqui
+    console.log(this.state);
+    /*// fazer as verificações de email valido e tamanho da password aqui
     getAxiosInstance().post('/user/create', this.state) // alterar aqui se o state for alterado
       .then((response) => {
         console.log(response.data);
@@ -38,13 +40,13 @@ class RegisterCompany extends Component {
             }
           });
         } else {
-          // mostrar mensagem a dizer que registou com sucesso. redirecionar para o login
+          this.props.navigation.navigate('Login');
         }
       })
       .catch((error) => {
         console.log(error);
         // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
-      });
+      });*/
   }
 
   onAddressChange = (text) => {
@@ -54,7 +56,7 @@ class RegisterCompany extends Component {
     });
   }
 
-  nameChanged = (text) => {
+  onNameChange = (text) => {
     this.setState({
       ...this.state,
       name: text
@@ -82,6 +84,13 @@ class RegisterCompany extends Component {
     });
   }
 
+  onPostalChange = (text) => {
+    this.setState({
+      ...this.state,
+      postalCode: text
+    });
+  }
+
   onPasswordChange = (text) => {
     this.setState({
       ...this.state,
@@ -103,7 +112,7 @@ class RegisterCompany extends Component {
                 <Input onTextChange={this.onAddressChange} placeholder='Morada' />
               </Item>
               <Item rounded>
-                <Input onTextChange={this.onPostalCodeChange} placeholder='Código Postal' />
+                <Input onTextChange={this.onPostalChange} placeholder='Código Postal' />
               </Item>
               <Item rounded>
                 <Input onTextChange={this.onEmailChange} placeholder='Email' />

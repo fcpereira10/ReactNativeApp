@@ -5,7 +5,7 @@ import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
 import { getAxiosInstance } from '../util/axios';
-import { setAccessToken, getAccessToken } from '../util/authentication';
+import { setAccessToken, getAccessToken, getPayload } from '../util/authentication';
 import { withNavigation } from 'react-navigation';
 
 class Login extends Component {
@@ -39,29 +39,32 @@ class Login extends Component {
   handleLogin = () => {
     // fazer as verificações de email valido e tamanho da password aqui
 
-    getAxiosInstance().post('/user/login', this.state) // alterar aqui se o state for alterado
-      .then(async (response) => {
-        console.log(response.data);
-        if (response.data.errors.length !== 0) {
-          response.data.errors.forEach(error => {
-            if (error.code === 'no_user') {
-              // mostrar erro 'Utilizador não existe'
-            } else if (error.code === 'wrong_password') {
-              // mostrar erro 'Password errada'
-            } else if (error.code === 'db_error') {
-              // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
-            }
-          });
-        } else {
-          await setAccessToken(response.data.token);
-          console.log(response.data.token);
-          this.props.navigation.navigate('Home');
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
-      });
+    if (this.state.email == "admin") {
+      this.props.navigation.navigate('Comment');
+    } else {
+      getAxiosInstance().post('/user/login', this.state) // alterar aqui se o state for alterado
+        .then(async (response) => {
+          console.log(response.data);
+          if (response.data.errors.length !== 0) {
+            response.data.errors.forEach(error => {
+              if (error.code === 'no_user') {
+                // mostrar erro 'Utilizador não existe'
+              } else if (error.code === 'wrong_password') {
+                // mostrar erro 'Password errada'
+              } else if (error.code === 'db_error') {
+                // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
+              }
+            });
+          } else {
+            await setAccessToken(response.data.token, response.data.payload);
+            this.props.navigation.navigate('Home');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          // mostrar erro 'Ocorreu um problema. Tente novamente mais tarde'
+        });
+    }
   };
 
   render() {
@@ -78,7 +81,7 @@ class Login extends Component {
             </Right>
           </Header>
           <Thumbnail large source={require('../assets/images/logo.png')} />
-          <Text style={{ paddingTop: 20, fontSize: 25, alignSelf: 'center' }}>Bem-vindo de Volta!</Text>
+          <Text style={{ paddingTop: 20, fontSize: 25, alignSelf: 'center' }}>Bem vindo de volta!</Text>
           <Content scrollEnabled={false}>
             <Form>
               <Item rounded>

@@ -53,7 +53,7 @@ const AppNavigator = createStackNavigator({
   },
 },
   {
-    initialRouteName: 'Comment',
+    initialRouteName: 'Home',
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {

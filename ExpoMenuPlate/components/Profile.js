@@ -6,15 +6,26 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 import { Platform, View, TouchableOpacity } from "react-native";
-import { destroyAccessToken } from '../util/authentication';
+import { destroyAccessToken, getPayload } from '../util/authentication';
 
 class Profile extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            user: {
+                userId: "",
+                email: "",
+                name: ""
+            }
+        }
     }
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
+        this.setState({
+            user: await getPayload()
+        });
     };
 
     render() {
@@ -26,10 +37,10 @@ class Profile extends Component {
                             <CardItem>
                                 <Body>
                                     <Thumbnail source={require('../assets/images/person-icon.png')} style={{ width: 80, height: 80, borderRadius: 80 / 2 }} />
-                                    <H1 style={{ paddingTop: 20, alignSelf: 'center' }}>Nome do Utilizador</H1>
+                                    <H1 style={{ paddingTop: 20, alignSelf: 'center' }}>{this.state.user.name}</H1>
                                     <Text style={{ paddingTop: 10, alignSelf: 'center' }}>
                                         <Icon name='navigate' />
-                                        <H3> Cidade</H3>
+                                        <H3> Morada</H3>
                                     </Text>
                                 </Body>
                             </CardItem>
@@ -44,6 +55,8 @@ class Profile extends Component {
                                             <Text style={{ fontSize: 17, color: '#FF8B2D' }} onPress={() => {
                                                 this.props.navigation.navigate('Login');
                                                 destroyAccessToken();
+                                                /*console.log("asdasdasdsa");
+                                                console.log(getPayload());*/
                                             }}>Terminar Sessão</Text>
                                         </TouchableOpacity>
                                     </View>
