@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Container, CheckBox, Picker, Thumbnail, List, ListItem, Form, View, Header, DatePicker, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider } from 'native-base';
+import { Container, CheckBox, Card, CardItem, Picker, Thumbnail, Textarea, List, ListItem, Form, View, Header, DatePicker, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider } from 'native-base';
 import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
@@ -93,7 +93,7 @@ class Reservation extends Component {
         <Container>
           <Thumbnail large source={require('../assets/images/logo.png')} />
           <Text style={{ paddingTop: 20, fontSize: 25, alignSelf: 'center' }}>{this.props.navigation.getParam('name', 'Error')}</Text>
-          <Content scrollEnabled={false}>
+          <Content>
             <Form>
               <Item rounded>
                 <DatePicker
@@ -140,7 +140,7 @@ class Reservation extends Component {
                 <Picker
                   mode="dropdown"
                   iosIcon={<Icon name="people" style={{ color: "#555555" }} />}
-                  style={{ width: undefined }}
+                  style={{ width: undefined}}
                   placeholder="Número de Pessoas"
                   placeholderStyle={{ color: "#555555" }}
                   placeholderIconColor="#FF7A00"
@@ -156,7 +156,10 @@ class Reservation extends Component {
                   <Picker.Item label="6 Pessoas" value="key5" />
                 </Picker>
               </Item>
+              </Form>
               <List>
+              
+                <Text>Menu</Text>
                 {this.state.menuList.map(element => {
                   return (
                     <MenuItem
@@ -166,10 +169,11 @@ class Reservation extends Component {
                   );
                 })}
               </List>
+              <Textarea rowSpan={5} bordered placeholder="Notas" />
               <Button rounded>
                 <Text style={{ fontSize: 20, color: "#fff" }}>Reservar</Text>
               </Button>
-            </Form>
+            
 
           </Content>
         </Container>

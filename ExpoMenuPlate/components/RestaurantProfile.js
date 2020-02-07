@@ -24,30 +24,27 @@ class RestaurantProfile extends Component {
                         <Card transparent>
                             <CardItem>
                                 <Body>
-                                    <Thumbnail source={require('../assets/images/logo.png')} style={{ width: 80, height: 80, borderRadius: 80 / 2 }} />
-                                    <H1 style={{ paddingTop: 20, alignSelf: 'center' }}>{this.props.name}</H1>
+                                    <Thumbnail source={require('../assets/images/person-icon.png')} style={{ width: 80, height: 80, borderRadius: 80 / 2 }} />
+                                    <H1 style={{ paddingTop: 20, alignSelf: 'center' }}>Nome do Utilizador</H1>
                                     <Text style={{ paddingTop: 10, alignSelf: 'center' }}>
                                         <Icon name='navigate' />
-                                        <H3> {this.state.address}</H3>
+                                        <H3> Cidade</H3>
                                     </Text>
                                 </Body>
                             </CardItem>
                         </Card>
                         <Card transparent>
-                            <Container>
-                                <Header hasTabs />
-                                <Tabs>
-                                    <Tab heading={<TabHeading><Icon name="camera" /><Text>Camera</Text></TabHeading>}>
-                                        <Text>asdasdas</Text>
-                                    </Tab>
-                                    <Tab heading={<TabHeading><Text>No Icon</Text></TabHeading>}>
-                                        <Text>asdasdas</Text>
-                                    </Tab>
-                                    <Tab heading={<TabHeading><Icon name="apps" /></TabHeading>}>
-                                        <Text>asdasdas</Text>
-                                    </Tab>
-                                </Tabs>
-                            </Container>
+                            <CardItem>
+                                <Body>
+                                    <Button rounded style={{ width: 200, alignSelf: 'center' }}><Text style={{ fontSize: 17, color: 'black' }}>Editar Perfil</Text></Button>
+                                    <Button rounded style={{ width: 200, alignSelf: 'center' }}><Text style={{ fontSize: 17, color: 'black' }} onPress={() => this.props.navigation.navigate('History')}>Reservas</Text></Button>
+                                    <View style={{ paddingTop: 20, alignSelf: 'center', marginTop: 4 }}>
+                                        <TouchableOpacity>
+                                            <Text style={{ fontSize: 17, color: '#FF8B2D' }} onPress={() => this.props.navigation.navigate('Login')}>Terminar Sessão</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </Body>
+                            </CardItem>
                         </Card>
                     </Content>
                 </Container>

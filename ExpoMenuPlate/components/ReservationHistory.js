@@ -28,11 +28,32 @@ class ReservationHistory extends Component {
                                 </Body>
                             </CardItem>
                         </Card>
-                        <Card transparent>
+                        <Card>
+                            <CardItem Header bordered>
+                            <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Nome do Restaurante</Text>
+                            </CardItem>
                             <CardItem>
-                                <Body>
-                                    
-                                </Body>
+                                <Icon name="calendar" style={{ color: "#555555" }} /><Text>07/02/2020</Text>
+                            </CardItem>
+                            <CardItem>
+                                <Icon name="time" style={{ color: "#555555" }} /><Text>13h00</Text>
+                            </CardItem>
+                            <CardItem>
+                                <Icon name="people" style={{ color: "#555555" }} /><Text>3 Pessoas</Text>
+                            </CardItem>
+                        </Card>
+                        <Card>
+                            <CardItem Header bordered>
+                            <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Bar do ISP</Text>
+                            </CardItem>
+                            <CardItem>
+                                <Icon name="calendar" style={{ color: "#555555" }} /><Text>11/02/2020</Text>
+                            </CardItem>
+                            <CardItem>
+                                <Icon name="time" style={{ color: "#555555" }} /><Text>19h00</Text>
+                            </CardItem>
+                            <CardItem>
+                                <Icon name="people" style={{ color: "#555555" }} /><Text>2 Pessoas</Text>
                             </CardItem>
                         </Card>
                     </Content>

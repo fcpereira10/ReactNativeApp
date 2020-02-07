@@ -7,6 +7,7 @@ import Login from './screens/LoginScreen';
 import Register from './screens/RegisterScreen';
 import Reservation from './screens/ReservationScreen';
 import History from './screens/ReservationHistoryScreen';
+import RestaurantProfile from './screens/RestaurantProfileScreen';
 import Profile from './screens/ProfileScreen';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
@@ -35,6 +36,7 @@ const AppNavigator = createStackNavigator({
   },
   Profile: { screen: Profile },
   Register: { screen: Register },
+  RestaurantProfile: { screen: RestaurantProfile },
   History: { screen: History,
     navigationOptions: {
       title: 'Histórico de Reservas'

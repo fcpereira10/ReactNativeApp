@@ -50,6 +50,7 @@ class Home extends Component {
                     {this.state.list.map(element => {
                         return (
                             <RestaurantCard
+                                onPress={() => this.props.navigation.navigate('Reservation')}
                                 navigation={this.props.navigation}
                                 style={{ height: '1000px !important' }}
                                 key={element.address}
