@@ -5,7 +5,7 @@ import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
 import { Platform, Text, View, TouchableOpacity } from "react-native";
 import { getAxiosInstance } from '../util/axios';
-import { setAccessToken } from '../util/authentication';
+import { setAccessToken, getAccessToken } from '../util/authentication';
 import { withNavigation } from 'react-navigation';
 
 class Login extends Component {
@@ -40,7 +40,7 @@ class Login extends Component {
     // fazer as verificações de email valido e tamanho da password aqui
 
     getAxiosInstance().post('/user/login', this.state) // alterar aqui se o state for alterado
-      .then((response) => {
+      .then(async (response) => {
         console.log(response.data);
         if (response.data.errors.length !== 0) {
           response.data.errors.forEach(error => {
@@ -53,8 +53,9 @@ class Login extends Component {
             }
           });
         } else {
-          setAccessToken(response.data.token);
-          // mostrar mensagem a dizer que logou com sucesso e ir para home
+          await setAccessToken(response.data.token);
+          console.log(response.data.token);
+          this.props.navigation.navigate('Home');
         }
       })
       .catch((error) => {

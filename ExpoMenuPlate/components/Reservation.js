@@ -34,7 +34,8 @@ class Reservation extends Component {
       selected2: undefined,
       chosenDate: new Date(),
       menuList: [],
-      selectedMenu: []
+      selectedMenu: [],
+      restaurant: this.props.navigation.getParam('restaurant', null)
     };
   }
 
@@ -74,8 +75,7 @@ class Reservation extends Component {
   }
 
   componentDidMount = () => {
-    console.log("company id", this.props.navigation.getParam('companyId', null));
-    getAxiosInstance().get('/company/menu?companyId=' + this.props.navigation.getParam('companyId', null))
+    getAxiosInstance().get('/company/menu?companyId=' + this.state.restaurant._id)
       .then((response) => {
         this.setState({
           ...this.state,
@@ -92,7 +92,7 @@ class Reservation extends Component {
       <StyleProvider style={getTheme(commonColor)}>
         <Container>
           <Thumbnail large source={require('../assets/images/logo.png')} />
-          <Text style={{ paddingTop: 20, fontSize: 25, alignSelf: 'center' }}>{this.props.navigation.getParam('name', 'Error')}</Text>
+          <Text style={{ paddingTop: 20, fontSize: 25, alignSelf: 'center' }}>{this.state.restaurant.name}</Text>
           <Content>
             <Form>
               <Item rounded>
@@ -110,7 +110,6 @@ class Reservation extends Component {
                   placeHolderTextStyle={{ color: "#555555" }}
                   onDateChange={this.setDate}
                   disabled={false}
-
                 />
 
                 <Icon name="calendar" style={{ color: "#555555" }} />
@@ -140,7 +139,7 @@ class Reservation extends Component {
                 <Picker
                   mode="dropdown"
                   iosIcon={<Icon name="people" style={{ color: "#555555" }} />}
-                  style={{ width: undefined}}
+                  style={{ width: undefined }}
                   placeholder="Número de Pessoas"
                   placeholderStyle={{ color: "#555555" }}
                   placeholderIconColor="#FF7A00"
@@ -156,25 +155,23 @@ class Reservation extends Component {
                   <Picker.Item label="6 Pessoas" value="key5" />
                 </Picker>
               </Item>
-              </Form>
-              <List>
-              
-                <Text>Menu</Text>
-                {this.state.menuList.map(element => {
-                  return (
-                    <MenuItem
-                      item={element}
-                      click={this.onMenuItemClicked}
-                    />
-                  );
-                })}
-              </List>
-              <Textarea rowSpan={5} bordered placeholder="Notas" />
-              <Button rounded>
-                <Text style={{ fontSize: 20, color: "#fff" }}>Reservar</Text>
-              </Button>
-            
+            </Form>
+            <List>
 
+              <Text>Menu</Text>
+              {this.state.menuList.map(element => {
+                return (
+                  <MenuItem
+                    item={element}
+                    click={this.onMenuItemClicked}
+                  />
+                );
+              })}
+            </List>
+            <Textarea rowSpan={5} bordered placeholder="Notas" />
+            <Button rounded>
+              <Text style={{ fontSize: 20, color: "#fff" }}>Reservar</Text>
+            </Button>
           </Content>
         </Container>
       </StyleProvider >

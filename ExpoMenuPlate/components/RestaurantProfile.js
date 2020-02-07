@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Thumbnail, Card, CardItem, H1, H3, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider } from 'native-base';
+import { List, ListItem, Container, Header, Thumbnail, Card, CardItem, H1, H3, Title, Toast, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Item, Input, Text, StyleProvider } from 'native-base';
 import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/material';
 import commonColor from '../native-base-theme/variables/commonColor';
@@ -15,10 +15,25 @@ class RestaurantProfile extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            restaurant: this.props.navigation.getParam('restaurant', null)
+        }
     }
 
     componentDidMount = () => {
-        console.log(this.props);
+        let totalRating = 0;
+
+        this.state.restaurant.comments.forEach(comment => {
+            if(comment.status === 1) {
+                totalRating += comment.stars;
+            }
+        });
+
+        this.setState({
+            ...this.state,
+            rating: this.state.restaurant.comments.length > 0 && totalRating / this.state.restaurant.comments.length != 0 ? (totalRating / this.state.restaurant.comments.length).toFixed(2) : "Unavaliable"
+        });
     };
 
     render() {
@@ -35,13 +50,13 @@ class RestaurantProfile extends Component {
                         </Card>
                         <Card>
                             <CardItem Header bordered>
-                                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Esquina do Avesso</Text>
+                                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>{this.state.restaurant.name}</Text>
                             </CardItem>
                             <CardItem>
-                                <Icon name="navigate" style={{ color: "#555555" }} /><Text>Rua Santa Catarina, 102, Leça da Palmeira 4450, Portugal</Text>
+                                <Icon name="navigate" style={{ color: "#555555" }} /><Text>{this.state.restaurant.address}</Text>
                             </CardItem>
                             <CardItem>
-                                <Icon name="star" style={{ color: "#555555" }} /><Text>{this.props.companyId}</Text>
+                                <Icon name="star" style={{ color: "#555555" }} /><Text>{this.state.rating}</Text>
                             </CardItem>
                         </Card>
                         <Card>
@@ -59,7 +74,27 @@ class RestaurantProfile extends Component {
                             </Text>
                             </CardItem>
                         </Card>
-                        <Button primary><Text> Reservar </Text></Button>
+                        <Card>
+                            <CardItem Header bordered>
+                                <Text style={{ fontSize: 17, color: '#FF8B2D' }}>Comentários</Text>
+                            </CardItem>
+                            <CardItem>
+                                <List>
+                                    {this.state.restaurant.comments.map(element => {
+                                        if(element.status === 1) {
+                                            return (
+                                                <ListItem>
+                                                    <Text>{element.username} ({element.stars}☆): {element.comment}</Text>
+                                                </ListItem>
+                                            );
+                                        } else {
+                                            return null;
+                                        }
+                                    })}
+                                </List>
+                            </CardItem>
+                        </Card>
+                        <Button primary onPress={() => this.props.navigation.navigate('Reservation', {restaurant: this.state.restaurant})}><Text>Reservar</Text></Button>
                     </Content>
                 </Container>
             </StyleProvider >

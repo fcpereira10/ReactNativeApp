@@ -6,6 +6,7 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 import { getAxiosInstance } from '../util/axios';
+import { isAuthenticated } from '../util/authentication';
 
 class Home extends Component {
     static navigationOptions = {
@@ -32,6 +33,14 @@ class Home extends Component {
             });
     };
 
+    navigateToProfile = async () => {
+        if (await isAuthenticated()) {
+            this.props.navigation.navigate('Profile');
+        } else {
+            this.props.navigation.navigate('Login');
+        }
+    }
+
     render() {
         return (
             <StyleProvider style={getTheme(commonColor)}>
@@ -42,7 +51,7 @@ class Home extends Component {
                             <Input placeholder="Procurar Restaurante" placeholderTextColor="#FF7A00" />
                         </Item>
                         <Right>
-                            <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>
+                            <Button transparent onPress={() => this.navigateToProfile()}>
                                 <Icon name="person" />
                             </Button>
                         </Right>
@@ -52,11 +61,7 @@ class Home extends Component {
                             <RestaurantCard
                                 onPress={() => this.props.navigation.navigate('Reservation')}
                                 navigation={this.props.navigation}
-                                name={element.name}
-                                address={element.address}
-                                description={"falta isto"}
-                                companyId={element._id}
-                                stars={"5"} />
+                                restaurant={element} />
                         );
                     })}
                 </Container>

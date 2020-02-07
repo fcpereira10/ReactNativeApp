@@ -8,8 +8,12 @@ import { withNavigation } from 'react-navigation';
 
 class RestaurantCard extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   handleRestaurantClick = () => {
-    this.props.navigation.navigate('RestaurantProfile', { name: this.props.name, companyId: this.props.companyId });
+    this.props.navigation.navigate('RestaurantProfile', { restaurant: this.props.restaurant });
   }
 
   render() {
@@ -22,8 +26,8 @@ class RestaurantCard extends Component {
                 <Left>
                   <Thumbnail source={require('../assets/images/logo.png')} />
                   <Body>
-                    <Text onPress={this.handleRestaurantClick}>{this.props.name}</Text>
-                    <Text note>{this.props.address}</Text>
+                    <Text onPress={this.handleRestaurantClick}>{this.props.restaurant.name}</Text>
+                    <Text note>{this.props.restaurant.address}</Text>
                   </Body>
                 </Left>
               </CardItem>
@@ -34,7 +38,7 @@ class RestaurantCard extends Component {
                 <Left>
                   <Button transparent >
                     <Icon name="star" style={{ color: '#FF7A00' }} />
-                    <Text style={{ color: '#FF7A00' }}>{this.props.stars} stars</Text>
+                    <Text style={{ color: '#FF7A00' }}>5 stars</Text>
                   </Button>
                 </Left>
               </CardItem>

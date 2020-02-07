@@ -6,6 +6,7 @@ import commonColor from '../native-base-theme/variables/commonColor';
 import RestaurantCard from '../components/RestaurantCard'
 import { withNavigation } from 'react-navigation';
 import { Platform, View, TouchableOpacity } from "react-native";
+import { destroyAccessToken } from '../util/authentication';
 
 class Profile extends Component {
 
@@ -40,7 +41,10 @@ class Profile extends Component {
                                     <Button rounded style={{ width: 200, alignSelf: 'center' }}><Text style={{ fontSize: 17, color: 'black' }} onPress={() => this.props.navigation.navigate('History')}>Reservas</Text></Button>
                                     <View style={{ paddingTop: 20, alignSelf: 'center', marginTop: 4 }}>
                                         <TouchableOpacity>
-                                            <Text style={{ fontSize: 17, color: '#FF8B2D' }} onPress={() => this.props.navigation.navigate('Login')}>Terminar Sessão</Text>
+                                            <Text style={{ fontSize: 17, color: '#FF8B2D' }} onPress={() => {
+                                                this.props.navigation.navigate('Login');
+                                                destroyAccessToken();
+                                            }}>Terminar Sessão</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </Body>
