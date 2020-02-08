@@ -35,7 +35,7 @@ export const isAuthenticated = async () => {
 export const getPayload = async () => {
     try {
         const payload = await AsyncStorage.getItem('payload');
-        return JSON.parse(await AsyncStorage.getItem('payload'));
+        return JSON.parse(payload);
     } catch (error) {
         console.log("a:" + error);
         return null;

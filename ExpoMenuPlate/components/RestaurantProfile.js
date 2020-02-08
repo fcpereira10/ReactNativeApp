@@ -90,7 +90,7 @@ class RestaurantProfile extends Component {
                             <CardItem>
                                 <List>
                                     {this.state.restaurant.comments.map(element => {
-                                        if (element.status === 1) {
+                                        if (element.status == 1) {
                                             return (
                                                 <ListItem>
                                                     <Text>{element.username} ({element.stars}☆): {element.comment}</Text>

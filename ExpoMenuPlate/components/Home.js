@@ -24,7 +24,7 @@ class Home extends Component {
     componentDidMount = () => {
         getAxiosInstance().get('/company/list')
             .then((response) => {
-                console.log(response);
+                console.log(response.data);
                 this.setState({ list: response.data.reverse() });
             })
             .catch((error) => {
