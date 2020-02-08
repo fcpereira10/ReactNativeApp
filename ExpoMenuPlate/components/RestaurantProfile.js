@@ -24,16 +24,18 @@ class RestaurantProfile extends Component {
 
     componentDidMount = () => {
         let totalRating = 0;
+        let count = 0;
 
         this.state.restaurant.comments.forEach(comment => {
             if (comment.status == 1) {
                 totalRating += comment.stars;
+                count++;
             }
         });
 
         this.setState({
             ...this.state,
-            rating: this.state.restaurant.comments.length > 0 && totalRating / this.state.restaurant.comments.length != 0 ? (totalRating / this.state.restaurant.comments.length).toFixed(2) : "Unavaliable"
+            rating: this.state.restaurant.comments.length > 0 && totalRating / count != 0 ? (totalRating / count).toFixed(2) : "Unavaliable"
         });
     };
 
