@@ -26,7 +26,7 @@ class RestaurantProfile extends Component {
         let totalRating = 0;
 
         this.state.restaurant.comments.forEach(comment => {
-            if (comment.status === 1) {
+            if (comment.status == 1) {
                 totalRating += comment.stars;
             }
         });
